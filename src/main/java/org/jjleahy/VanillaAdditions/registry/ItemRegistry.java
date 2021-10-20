@@ -1,4 +1,4 @@
-package org.jjleahy.VanillaAdditions.item;
+package org.jjleahy.VanillaAdditions.registry;
 
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -7,7 +7,8 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import org.jjleahy.VanillaAdditions.block.BlockRegistry;
+import org.jjleahy.VanillaAdditions.item.ModFoods;
+import org.jjleahy.VanillaAdditions.registry.BlockRegistry;
 import org.jjleahy.VanillaAdditions.util.Reference;
 
 public class ItemRegistry {

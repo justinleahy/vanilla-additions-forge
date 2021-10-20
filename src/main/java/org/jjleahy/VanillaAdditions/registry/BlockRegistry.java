@@ -1,4 +1,4 @@
-package org.jjleahy.VanillaAdditions.block;
+package org.jjleahy.VanillaAdditions.registry;
 
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
@@ -8,6 +8,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.jjleahy.VanillaAdditions.block.HuckleBerryBushBlock;
 import org.jjleahy.VanillaAdditions.util.Reference;
 
 public class BlockRegistry {

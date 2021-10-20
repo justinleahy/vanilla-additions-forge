@@ -6,7 +6,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.jjleahy.VanillaAdditions.block.BlockRegistry;
+import org.jjleahy.VanillaAdditions.registry.BlockRegistry;
 
 public class ClientStartup {
 

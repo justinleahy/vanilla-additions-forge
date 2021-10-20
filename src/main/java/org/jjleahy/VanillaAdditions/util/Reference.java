@@ -18,4 +18,8 @@ public class Reference {
     public static final String HUCKLE_BERRY_BUSH_FEATURE = "patch_huckle_berry_bush";
     public static final String HUCKLE_BERRY_BUSH_FEATURE_SPARSE = "patch_huckle_berry_bush_sparse";
     public static final String HUCKLE_BERRY_BUSH_FEATURE_DECORATED = "patch_huckle_berry_bush";
+
+    public static String getReferenceName(String name) {
+        return MOD_ID + ":" + name;
+    }
 }
