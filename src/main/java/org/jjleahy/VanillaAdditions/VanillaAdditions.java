@@ -1,9 +1,14 @@
 package org.jjleahy.VanillaAdditions;
 
+import net.minecraft.data.BuiltinRegistries;
+import net.minecraft.data.worldgen.Features;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.levelgen.GenerationStep;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
@@ -29,6 +34,7 @@ import org.jjleahy.VanillaAdditions.util.Reference;
 import org.jjleahy.VanillaAdditions.worldgen.ModFeatures;
 
 import java.util.Set;
+import java.util.function.Supplier;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(Reference.MOD_ID)
@@ -51,16 +57,17 @@ public class VanillaAdditions {
         FMLJavaModLoadingContext.get().getModEventBus().register(ClientStartup.class);
 
         // World Generation and feature registration
-        MinecraftForge.EVENT_BUS.addListener(EventPriority.NORMAL, this::onBiomeLoading);
+        MinecraftForge.EVENT_BUS.register(ModFeatures.class);
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGH, this::onBiomeLoading);
 
         BlockRegistry.init();
         ItemRegistry.init();
+        ModFeatures.init();
     }
 
     private void setup(final FMLCommonSetupEvent event)
     {
-        // Preinitialization Event
-        LOGGER.info("----- Preinitialization -----");
+        event.enqueueWork(ModFeatures::configuredInit);
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)
@@ -75,20 +82,15 @@ public class VanillaAdditions {
 
     @SubscribeEvent
     public void onBiomeLoading(final BiomeLoadingEvent event) {
-        VanillaAdditions.LOGGER.info("----- Biome loading event -----");
         Set<ResourceKey<Biome>> mountain_biomes = BiomeDictionary.getBiomes(BiomeDictionary.Type.MOUNTAIN);
-        VanillaAdditions.LOGGER.info(mountain_biomes);
 
-        // Only mountain biomes registered to the ForgeRegistry will be counted
-        for(Biome biome : ForgeRegistries.BIOMES) {
-            for(ResourceKey key : mountain_biomes)
+        for(ResourceKey key : mountain_biomes)
+        {
+            if(key.location().equals(event.getName()))
             {
-                if(key.location().equals(biome.getRegistryName())) {
-                    VanillaAdditions.LOGGER.info("biome found " + biome);
-                }
+                event.getGeneration().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, Features.PATCH_BERRY_DECORATED);
             }
         }
-        BiomeGenerationSettingsBuilder builder = event.getGeneration();
     }
 
     @SubscribeEvent

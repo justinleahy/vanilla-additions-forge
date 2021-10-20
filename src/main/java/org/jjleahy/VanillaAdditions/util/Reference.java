@@ -13,6 +13,8 @@ public class Reference {
     public static final String HUCKLE_BERRY_BUSH_NAME = "huckle_berry_bush";
 
     // Feature Names
+    public static final String RANDOM_PATCH_FEATURE = "random_patch";
+
     public static final String HUCKLE_BERRY_BUSH_FEATURE = "patch_huckle_berry_bush";
     public static final String HUCKLE_BERRY_BUSH_FEATURE_SPARSE = "patch_huckle_berry_bush_sparse";
     public static final String HUCKLE_BERRY_BUSH_FEATURE_DECORATED = "patch_huckle_berry_bush";
