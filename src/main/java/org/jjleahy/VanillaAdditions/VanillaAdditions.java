@@ -62,7 +62,7 @@ public class VanillaAdditions {
 
         BlockRegistry.init();
         ItemRegistry.init();
-        ModFeatures.init();
+        //ModFeatures.init();
     }
 
     private void setup(final FMLCommonSetupEvent event)
@@ -88,6 +88,8 @@ public class VanillaAdditions {
         {
             if(key.location().equals(event.getName()))
             {
+                LOGGER.info("Added bushes to " + event.getName());
+                event.getGeneration().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModFeatures.PATCH_HUCKLE_BERRY_BUSH_DECORATED);
                 event.getGeneration().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, Features.PATCH_BERRY_DECORATED);
             }
         }

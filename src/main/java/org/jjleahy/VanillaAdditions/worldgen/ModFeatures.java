@@ -46,8 +46,8 @@ public class ModFeatures {
     public static ConfiguredFeature<?, ?> PATCH_HUCKLE_BERRY_BUSH_DECORATED;
 
     public static void configuredInit() {
-        PATCH_HUCKLE_BERRY_BUSH = register(Reference.HUCKLE_BERRY_BUSH_FEATURE, RANDOM_PATCH_FEATURE.get().configured(Configs.HUCKLE_BERRY_PATCH_CONFIG));
-        PATCH_HUCKLE_BERRY_BUSH_DECORATED = register(Reference.HUCKLE_BERRY_BUSH_FEATURE_DECORATED, PATCH_HUCKLE_BERRY_BUSH.decorated(Features.Decorators.HEIGHTMAP_DOUBLE_SQUARE));
+        PATCH_HUCKLE_BERRY_BUSH = register(Reference.HUCKLE_BERRY_BUSH_FEATURE, Feature.RANDOM_PATCH.configured(Configs.HUCKLE_BERRY_PATCH_CONFIG));
+        PATCH_HUCKLE_BERRY_BUSH_DECORATED = register(Reference.HUCKLE_BERRY_BUSH_FEATURE_DECORATED, PATCH_HUCKLE_BERRY_BUSH.decorated(Features.Decorators.HEIGHTMAP_DOUBLE_SQUARE).rarity(100));
     }
 
     private static <FC extends FeatureConfiguration> ConfiguredFeature<FC, ?> register(String key, ConfiguredFeature<FC, ?> configuredFeature) {
