@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "vanillaadditions:block/huckle_berry_bush_stage1"
+  }
+}
